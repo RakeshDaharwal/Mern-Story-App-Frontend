@@ -1,9 +1,9 @@
 import { useRoutes, Navigate } from "react-router-dom";
 import { Suspense } from "react";
 
-// import all modular routes
-import { userRoutes } from "./UserRoutes";
-import { adminRoutes } from "./AdminRoutes";
+// // import all modular routes
+import { UserRoutes } from "./UserRoute";
+import { AdminRoutes } from "./AdminRoute";
 import { authRoutes } from "./AuthRoutes";
 import { publicRoutes } from "./PublicRoutes";
 
@@ -11,8 +11,8 @@ const AppRoutes = () => {
   const routes = useRoutes([
     ...publicRoutes,
     authRoutes,
-    userRoutes,
-    adminRoutes,
+    UserRoutes,
+    AdminRoutes,
     { path: "*", element: <Navigate to="/" /> }
   ]);
 

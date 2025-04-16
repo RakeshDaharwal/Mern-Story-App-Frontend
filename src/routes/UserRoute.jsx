@@ -5,7 +5,7 @@ const UserDashboard = lazy(() => import("../pages/User/UserDashboard"));
 const HorrorStory = lazy(() => import("../pages/User/Story/HorrorStory"));
 const HistoricalStory = lazy(() => import("../pages/User/Story/HistoricalStory"));
 
-export const userRoutes = {
+export const UserRoutes = {
   path: "/user",
   children: [
     { path: "dashboard", element: <UserDashboard /> },
