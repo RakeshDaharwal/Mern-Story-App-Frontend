@@ -1,10 +1,14 @@
 import React from 'react'
+import HeroSection from '../components/Home/HeroSection';
+import { Box } from '@mui/material';
 
 const Home = () => {
   return (
-    <div>
-      Iam Home Page
-    </div>
+    <>
+     <Box sx={{ backgroundColor: '#000', minHeight: '100vh' }}>
+        <HeroSection />
+      </Box>
+    </>
   )
 }
 
