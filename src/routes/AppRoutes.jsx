@@ -7,13 +7,15 @@ import { AdminRoutes } from "./AdminRoute";
 import { authRoutes } from "./AuthRoutes";
 import { publicRoutes } from "./PublicRoutes";
 
+import Error404 from "../components/Common/Error404";
+
 const AppRoutes = () => {
   const routes = useRoutes([
     ...publicRoutes,
     authRoutes,
     UserRoutes,
     AdminRoutes,
-    { path: "*", element: <Navigate to="/" /> }
+    { path: "*", element: <Error404 /> }
   ]);
 
   return (
