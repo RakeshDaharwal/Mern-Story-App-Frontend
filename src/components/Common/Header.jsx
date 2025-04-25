@@ -44,12 +44,32 @@ export default function Header() {
 
       {/* Buttons inside drawer for mobile */}
       <Box sx={{ mt: 'auto', p: 2 }}>
-        <Button fullWidth variant="contained" color="primary" sx={{ mb: 1 }}>
-          Sign In
-        </Button>
-        <Button fullWidth variant="outlined" color="primary">
-          Sign Up
-        </Button>
+      <Button
+  fullWidth
+  variant="contained"
+  sx={{
+    mb: 1,
+    backgroundColor: '#13AA52',
+    '&:hover': { backgroundColor: '#0e8d44' },
+    color: '#fff',
+  }}
+>
+  Sign In
+</Button>
+<Button
+  fullWidth
+  variant="outlined"
+  sx={{
+    borderColor: '#13AA52',
+    color: '#13AA52',
+    '&:hover': {
+      backgroundColor: 'rgba(19, 170, 82, 0.1)',
+      borderColor: '#13AA52',
+    },
+  }}
+>
+  Sign Up
+</Button>
       </Box>
     </Box>
   );
@@ -72,10 +92,20 @@ export default function Header() {
             </IconButton>
           )}
 
-          <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+         
+          <Drawer
+            anchor="left"
+            open={drawerOpen}
+            onClose={toggleDrawer(false)}
+            PaperProps={{
+              sx: {
+                backgroundColor: '#121212', // Dark grey (better than pure black for contrast)
+                color: '#fff',               // White text
+              }
+            }}
+          >
             {drawerContent}
           </Drawer>
-
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Sanatani Tales
           </Typography>
