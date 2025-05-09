@@ -73,7 +73,9 @@ export default function SignUp() {
       }
 
       try {
-        const response = await axios.post(`${process.env.REACT_APP_API_URL}/sign-up`, formData);
+        // const response = await axios.post(`${process.env.REACT_APP_API_URL}/sign-up`, formData);
+
+        const response = await axios.post('https://sanatani-tales-backend.onrender.com/sign-up', formData);
 
         if (response.status === 201) {
           toast.success('OTP has been sent to your email. Please check it!');
@@ -86,7 +88,7 @@ export default function SignUp() {
     } else if (activeStep === 1) {
       if (formData.otp === '123456') {
         try {
-          await axios.post(`${process.env.REACT_APP_API_URL}/verify-email`, {
+          await axios.post('https://sanatani-tales-backend.onrender.com/verify-email', {
             email: formData.email,
           });
 

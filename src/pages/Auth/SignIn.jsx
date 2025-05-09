@@ -34,7 +34,7 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/sign-in`, data);
+      const res = await axios.post('https://sanatani-tales-backend.onrender.com/sign-in', data);
       localStorage.setItem('token', res.data.token);
 
       Swal.fire({
