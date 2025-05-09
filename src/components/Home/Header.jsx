@@ -14,6 +14,7 @@ import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -24,55 +25,6 @@ export default function Header() {
     setDrawerOpen(open);
   };
 
-  // const drawerContent = (
-  //   <Box
-  //     sx={{ width: 250, display: 'flex', flexDirection: 'column', height: '100%' }}
-  //     role="presentation"
-  //     onClick={toggleDrawer(false)}
-  //   >
-  //     <List>
-  //       {['Home', 'About', 'Contact'].map((text) => (
-  //         <ListItem key={text} disablePadding>
-  //           <ListItemButton>
-  //             <ListItemText primary={text} />
-  //           </ListItemButton>
-  //         </ListItem>
-  //       ))}
-  //     </List>
-
-  //     <Divider sx={{ my: 1 }} />
-
-  //     {/* Buttons inside drawer for mobile */}
-  //     <Box sx={{ mt: 'auto', p: 2 }}>
-  //       <Button
-  //         fullWidth
-  //         variant="contained"
-  //         sx={{
-  //           mb: 1,
-  //           backgroundColor: '#13AA52',
-  //           '&:hover': { backgroundColor: '#0e8d44' },
-  //           color: '#fff',
-  //         }}
-  //       >
-  //         Sign In
-  //       </Button>
-  //       <Button
-  //         fullWidth
-  //         variant="outlined"
-  //         sx={{
-  //           borderColor: '#13AA52',
-  //           color: '#13AA52',
-  //           '&:hover': {
-  //             backgroundColor: 'rgba(19, 170, 82, 0.1)',
-  //             borderColor: '#13AA52',
-  //           },
-  //         }}
-  //       >
-  //         Sign Up
-  //       </Button>
-  //     </Box>
-  //   </Box>
-  // );
 
   const drawerContent = (
     <Box
@@ -109,36 +61,39 @@ export default function Header() {
         ))}
       </List>
 
-      <Divider sx={{ my: 2, borderColor: '#333' }} />
 
-      {/* Buttons inside drawer for mobile */}
       <Box sx={{ mt: 'auto', p: 2 }}>
-        <Button
-          fullWidth
-          variant="contained"
-          sx={{
-            mb: 1,
-            backgroundColor: '#13AA52',
-            '&:hover': { backgroundColor: '#0e8d44' },
-            color: '#fff',
-          }}
-        >
-          Sign In
-        </Button>
-        <Button
-          fullWidth
-          variant="outlined"
-          sx={{
-            borderColor: '#13AA52',
-            color: '#13AA52',
-            '&:hover': {
-              backgroundColor: 'rgba(19, 170, 82, 0.1)',
+        <Divider sx={{ my: 2, borderColor: '#333' }} />
+        <NavLink to="/auth/signin" style={{ textDecoration: 'none' }}>
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{
+              mb: 1,
+              backgroundColor: '#13AA52',
+              '&:hover': { backgroundColor: '#0e8d44' },
+              color: '#fff',
+            }}
+          >
+            Sign In
+          </Button>
+        </NavLink>
+        <NavLink to="/auth/signup" style={{ textDecoration: 'none' }}>
+          <Button
+            fullWidth
+            variant="outlined"
+            sx={{
               borderColor: '#13AA52',
-            },
-          }}
-        >
-          Sign Up
-        </Button>
+              color: '#13AA52',
+              '&:hover': {
+                backgroundColor: 'rgba(19, 170, 82, 0.1)',
+                borderColor: '#13AA52',
+              },
+            }}
+          >
+            Sign Up
+          </Button>
+        </NavLink>
       </Box>
     </Box>
   );
@@ -186,29 +141,31 @@ export default function Header() {
           {/* Show buttons only on desktop */}
           {!isMobile && (
             <>
-              <Button color="inherit"
+              <NavLink to="/auth/signin" style={{ textDecoration: 'none', marginRight: 8 }}>
+                <Button
+                  sx={{
+                    backgroundColor: '#13AA52',
+                    '&:hover': { backgroundColor: '#0e8d44' },
+                    color: '#fff',
+                  }}
+                >
+                  Sign In
+                </Button>
+              </NavLink>
+              <NavLink to="/auth/signup" style={{ textDecoration: 'none' }}>
+                <Button variant="outlined" color="inherit"
 
-                sx={{
-                  mr: 1,
-                  backgroundColor: '#13AA52',
-                  '&:hover': { backgroundColor: '#0e8d44' },
-                  color: '#fff',
-                }}
-              >
-                Sign In
-              </Button>
-              <Button variant="outlined" color="inherit"
-
-                sx={{
-                  borderColor: '#13AA52',
-                  color: '#13AA52',
-                  '&:hover': {
-                    backgroundColor: 'rgba(19, 170, 82, 0.1)',
+                  sx={{
                     borderColor: '#13AA52',
-                  },
-                }}>
-                Sign Up
-              </Button>
+                    color: '#13AA52',
+                    '&:hover': {
+                      backgroundColor: 'rgba(19, 170, 82, 0.1)',
+                      borderColor: '#13AA52',
+                    },
+                  }}>
+                  Sign Up
+                </Button>
+              </NavLink>
             </>
           )}
         </Toolbar>
