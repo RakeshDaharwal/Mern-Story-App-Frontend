@@ -249,7 +249,7 @@ export default function SignUp() {
               <Button
                 variant="text"
                 size="small"
-                onClick={() => navigate('/signin')}
+                onClick={() => navigate('/auth/signin')}
                 sx={{ textTransform: 'none', padding: 0, minWidth: 'auto' }}
               >
                 Sign In

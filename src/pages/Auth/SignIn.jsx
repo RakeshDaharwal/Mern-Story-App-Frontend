@@ -142,7 +142,7 @@ const SignIn = () => {
                 <Button
                   variant="text"
                   size="small"
-                  onClick={() => navigate('/')}
+                  onClick={() => navigate('/auth/signup')}
                   sx={{ textTransform: 'none', padding: 0, minWidth: 'auto' }}
                 >
                   Sign Up
