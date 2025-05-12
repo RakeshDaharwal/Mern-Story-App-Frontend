@@ -1,51 +1,36 @@
-// src/components/VideoPlayer.js
-import React, { useEffect, useRef } from 'react';
-import Hls from 'hls.js';
+
+
+import React, { useEffect } from 'react';
 
 const VideoPlayer = () => {
-  const videoRef = useRef(null);
-  const videoSrc = 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'; // Replace with your secure HLS URL
+  const videoId = '1OfbZTWC4iEciBv128t8OZuXcLcD-U6cg'; // Your Google Drive File ID
+  const videoUrl = `https://drive.google.com/file/d/${videoId}/preview`;
 
   useEffect(() => {
-    const video = videoRef.current;
-
-    // Initialize HLS
-    if (Hls.isSupported()) {
-      const hls = new Hls();
-      hls.loadSource(videoSrc);
-      hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, function () {
-        video.play();
-      });
-
-      return () => {
-        hls.destroy(); // Cleanup on unmount
-      };
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = videoSrc;
-      video.addEventListener('loadedmetadata', () => {
-        video.play();
-      });
-    }
-
     // Disable right-click
     const disableContextMenu = (e) => e.preventDefault();
     document.addEventListener('contextmenu', disableContextMenu);
 
-    // Disable drag
-    const disableDrag = (e) => e.preventDefault();
-    video.addEventListener('dragstart', disableDrag);
-
-    // Cleanup
     return () => {
       document.removeEventListener('contextmenu', disableContextMenu);
-      video.removeEventListener('dragstart', disableDrag);
     };
   }, []);
 
   return (
     <div style={styles.container}>
-      <video ref={videoRef} controls style={styles.video} />
+      <div style={styles.videoWrapper}>
+        <iframe
+          src={videoUrl}
+          width="100%"
+          height="100%"
+          allow="autoplay"
+          allowFullScreen
+          frameBorder="0"
+          title="Google Drive Video"
+          sandbox="allow-scripts allow-same-origin allow-presentation"
+        ></iframe>
+        <div style={styles.overlay}></div>
+      </div>
     </div>
   );
 };
@@ -58,11 +43,22 @@ const styles = {
     alignItems: 'center',
     height: '100vh',
   },
-  video: {
-    width: '80%',
-    maxWidth: '800px',
+  videoWrapper: {
+    position: 'relative',
+    width: '800px',
+    height: '450px',
     border: '2px solid #444',
     borderRadius: '12px',
+    overflow: 'hidden',
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: 2,
+    pointerEvents: 'none',
   },
 };
 
