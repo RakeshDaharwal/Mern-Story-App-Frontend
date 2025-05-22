@@ -1,5 +1,6 @@
 import { lazy } from "react";
 
-const VideoPlayer = lazy(() => import("../pages/VideoPlayer"));
 
-export const publicRoutes = [{ path: "/", element: <VideoPlayer /> }];
+const Home = lazy(() => import("../pages/Home"));
+
+export const publicRoutes = [{ path: "/", element: <Home /> }];
